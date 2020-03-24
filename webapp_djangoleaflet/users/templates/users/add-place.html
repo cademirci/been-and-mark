@@ -1,0 +1,47 @@
+{% extends "been_and_mark/base.html" %}
+{% block content %}
+    {% load leaflet_tags %}
+    {% leaflet_map "adder_map" callback="window.addNewPlace" %}
+    <script type="text/javascript">
+        function addNewPlace(map, options) {
+            var theMarker = {};
+            var userIcon = L.icon({
+                iconUrl: 'https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png',
+                iconSize: [42, 30]
+            });
+            map.on('click', function(e) {
+                var latlng = map.mouseEventToLatLng(e.originalEvent),
+                    latitude = latlng.lat,
+                    longitude = latlng.lng
+                ;
+                if (theMarker != undefined) {
+                    map.removeLayer(theMarker);
+                }
+                theMarker = L.marker([latitude, longitude], {icon: userIcon}).addTo(map);
+                document.querySelector('#latField').value = latitude;
+                document.querySelector('#lngField').value = longitude;
+            });
+        }
+    </script>
+    <div class="content_container">
+        <p style="text-align: center">Click the exact place on the map and go on.</p>
+        <form method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="addPlaceButton">Add</button>
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <style media="screen">
+        #addPlace {
+            border-bottom: 3px solid #fff;
+        }
+        textarea {
+            white-space: pre-wrap;
+        }
+    </style>
+{% endblock content %}

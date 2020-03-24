@@ -1,0 +1,15 @@
+{% extends "been_and_mark/base.html" %}
+{% block content %}
+    <div class="content_container">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"">Login</button>
+        </form>
+    </div>
+    <style media="screen">
+        #login {
+            border-bottom: 3px solid #fff;
+        }
+    </style>
+{% endblock content %}

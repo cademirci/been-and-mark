@@ -1,0 +1,20 @@
+{% extends "been_and_mark/base.html" %}
+{% block content %}
+    <div class="content_container">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"">Register</button>
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <style media="screen">
+        #register {
+            border-bottom: 3px solid #fff;
+        }
+    </style>
+{% endblock content %}

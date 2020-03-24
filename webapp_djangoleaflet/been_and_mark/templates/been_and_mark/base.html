@@ -1,0 +1,26 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <script type="text/javascript"> window.points = "{{ some_places }}" </script>
+    <script src="{% static 'been_and_mark/js/map.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'been_and_mark/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <title>Been & Mark</title>
+    {% load leaflet_tags %}
+    {% leaflet_css %}
+    {% leaflet_js %}
+</head>
+<body>
+    <div class="navigation_bar">
+        <a id="map" href="{% url 'app-home' %}">MAP</a>
+        {% if user.is_authenticated %}
+            <a id="addPlace" href="{% url 'add-place' %}">ADD NEW PLACE</a>
+            <a id="logout" href="{% url 'logout' %}">QUIT</a>
+        {% else %}
+            <a id="register" href="{% url 'register' %}">SIGN UP</a>
+            <a id="login" href="{% url 'login' %}">LOGIN</a>
+        {% endif %}
+    </div>
+    {% block content %}{% endblock %}
+</body>

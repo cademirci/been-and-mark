@@ -1,0 +1,73 @@
+{% extends "been_and_mark/base.html" %}
+{% block content %}
+    {% load leaflet_tags %}
+    {% leaflet_map "been_and_mark_map" callback="window.initializeMap" %}
+    <script type="text/javascript">
+        function initializeMap(map, options) {
+            // L.Icon.Default.iconUrl = 'https://pngimage.net/wp-content/uploads/2018/06/green-pin-png-1.png';
+            {% if user.is_authenticated %}
+            const pointsData = {
+                "type": "FeatureCollection",
+                "features": [
+                    {% for point in points %}
+                        {
+                            "type": "Feature",
+                            "properties": {
+                                "place_type": "{{ point.place_type }}",
+                                "name": "{{ point.name }}",
+                                "user": "{{ point.user }}",
+                                "created": "{{ point.created | date:'M d, Y' }}",
+                                "image": "{{ point.image.url }}",
+                                "notes": `
+                                    {{ point.notes | linebreaks }}
+                                `
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    {{ point.longitude }},
+                                    {{ point.latitude }}
+                                ]
+                            }
+                        },
+                    {% endfor %}
+                ]
+            }
+            var createBox = document.querySelector('.user_and_date_zone'),
+                noteBox = document.querySelector('.notes_content'),
+                imageBox = document.querySelector('.image_zone');
+            var layerGroup = L.geoJSON(pointsData, {
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(
+                        '<h2>' + feature.properties.name + '</h2>' +
+                        '<p>' + feature.properties.place_type + '</p>'
+                    );
+                    layer.on('click', function(event) {
+                        noteBox.innerHTML = feature.properties.notes;
+                        imageBox.innerHTML = '<img src="' + feature.properties.image + '">';
+                        createBox.innerHTML = "Been by " + feature.properties.user +
+                                              " and marked at " + feature.properties.created;
+                    });
+                }
+            }).addTo(map);
+            {% endif %}
+        }
+    </script>
+    <div class="content_container">
+
+        <div class="notes" data="false">
+            <div class="user_and_date_zone"></div>
+            <div class="notes_content"></div>
+            {% if user.is_authenticated %}
+            {% else %}
+                <p>Login (or sign up first) to reveal the memories...</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="image_zone"></div>
+    <style media="screen">
+        #map {
+            border-bottom: 3px solid #fff;
+        }
+    </style>
+{% endblock content %}

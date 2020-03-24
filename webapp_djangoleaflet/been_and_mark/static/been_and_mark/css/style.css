@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    background: #1a0500;
+    color: #f2f2f2;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.1em;
+}
+
+.navigation_bar {
+    padding: 42px 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.navigation_bar a {
+    margin: 0 20px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.content_container {
+    max-width: 800px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+#been_and_mark_map {
+    height: 50vh;
+}
+#adder_map {
+    height: 25vh;
+}
+
+.notes {
+    margin: 35px 0;
+    padding: 0 15px;
+    background: #1a151e;
+    border: 3px solid #271f2d;
+    border-radius: 7px;
+}
+.user_and_date_zone {
+    font-size: .9em;
+    padding: 5px;
+    text-align: right;
+}
+.image_zone {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+.image_zone img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+input {
+    background: #1a1a1a;
+    border: 1px solid #666;
+    border-radius: 3px;
+    padding: 5px;
+    color: #f2f2f2;
+    width: 100%;
+}
+textarea {
+    background: #1a1510;
+    border: 3px solid #666;
+    border-radius: 3px;
+    padding: 10px;
+    color: #f2f2f2;
+    width: 100%;
+    font-family: inherit;
+}
+
+button {
+    margin: 20px;
+    background: black;
+    padding: 5px 20px;
+    display: block;
+    margin: 42px auto;
+    color: #00e6e6;
+    border: 3px solid grey;
+    transition: .5s;
+    border-radius: 5px;
+}
+button:hover {
+    border-color: #00e6e6;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: #00e6e6;
+    transition: .5s;
+}
+a:hover, a:visited:hover {
+    color: #f2f2f2;
+}

@@ -1,0 +1,16 @@
+{% extends "been_and_mark/base.html" %}
+{% block content %}
+    <div class="content_container">
+        <h2>Hello {{ user.username }}!</h2>
+        You marked <span id="placeCount"></span> place.
+        <script type="text/javascript">
+            window.addEventListener('load', () => {
+                var count = 0;
+                {% for point in points %}
+                    count++;
+                {% endfor %}
+                document.getElementById('placeCount').innerHTML = count;
+            })
+        </script>
+    </div>
+{% endblock content %}
