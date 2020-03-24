@@ -22,8 +22,6 @@ been-and-mark application allows you to mark with a pin somewhere you have been 
 
 In this respect, it can be thought as some kind of very simple Foursquare clone. Only been-and-mark is written for personal usage, like a blog or a diary let's say. I have written a web application with an interactive map in my internship; then I wanted to rewrite and put a simpler and joyful version of it into Github, as a self development. Plus this is a totally different idea actually.
 
-It can be used as a notebook to remember places; quality of nearby coffee shops, 
-
 ## Programming
 
 I used Django back-end framework of Python, Leaflet Javascript library as the map-manager language, and default Django database manager which is sqlite3. 
