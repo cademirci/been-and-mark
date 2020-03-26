@@ -14,7 +14,7 @@ cd been-and-mark/webapp_djangoleaflet
 python manage.py runserver
 ```
 
-Then the app should appear on your `http://localhost:8000/``
+Then the app should appear on your http://localhost:8000/
 
 ## What Does been-and-mark Do?
 
