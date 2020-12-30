@@ -26,6 +26,6 @@ In this respect, it can be thought as some kind of very simple Foursquare clone.
 
 ## Programming
 
-I used Django back-end framework of Python, Leaflet Javascript library as the map-manager language, and default Django database manager which is sqlite3.
+I used Django back-end framework of Python, Leaflet JavaScript library as the map-manager language, and default Django database manager which is sqlite3.
 
 To more explaination, [my blog post](https://cademirci.github.io/a-web-application-with-world-map) can be viewed in my personal website.
